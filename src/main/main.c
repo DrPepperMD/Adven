@@ -30,14 +30,14 @@ int main()
 {
   FILE *fp;
   STARTSCR_MENU_ADVEN_LOGO_MAIN
-    STARTSCR_MENU_LICENSE_MAIN
+  STARTSCR_MENU_LICENSE_MAIN
     
-    STARTSCR_MENU_MAIN
-    STARTSCR_DEBUG
+  STARTSCR_MENU_MAIN
+  STARTSCR_DEBUG
     
-    STARTSCR_PLAYER_CONFIG
-    MAIN:
-    printf(">");	// <-- is sad but prevents a big bug!
+  STARTSCR_PLAYER_CONFIG
+  MAIN:
+  printf(">");	// <-- is sad but prevents a big bug!
   scanf("%20s", STARTSCR_COM);
   if (strcmp(STARTSCR_COM, NEW_GAME) == 0)
     {
@@ -70,7 +70,7 @@ int main()
 		  else
 		    {
 		      COMMAND_NOT_FOUND
-			goto TUTORIAL_COM;
+		      goto TUTORIAL_COM;
 		    }
 		}
 	      else if (YES_OR_NO == NO)
@@ -89,15 +89,15 @@ int main()
 	else
 	  {
 	  COM_NOT_FOUND_NEWGAME:
-	    COMMAND_NOT_FOUND
-	      if (NEWGAME_NAME == false)
-		{
-		  goto REDO_NAME;
-		}
-	      else
-		{
-		  goto NEWGAME_TUTORIAL;
-		}
+	  COMMAND_NOT_FOUND
+	    if (NEWGAME_NAME == false)
+	      {
+		goto REDO_NAME;
+	      }
+	    else
+	      {
+		goto NEWGAME_TUTORIAL;
+	      }
 	  }
     }
   else if (strcmp(STARTSCR_COM, LOAD_GAME) == 0)
@@ -123,7 +123,7 @@ int main()
   else if (strcmp(STARTSCR_COM, STARTSCR_CREDITS_COM) == 0)
     {
       STARTSCR_CREDITS_MAIN
-	goto MAIN;
+      goto MAIN;
     }
   else if (strcmp(STARTSCR_COM, DEBUG) == 0)
     {
@@ -136,9 +136,9 @@ int main()
   else
     {
       COMMAND_NOT_FOUND
-	goto MAIN;
+      goto MAIN;
     }
- LOADGAME:
+LOADGAME:
   printf("\nThis function is under development :(\n\n");
   goto MAIN;
   /*
@@ -146,65 +146,65 @@ int main()
     this is used for test macros.
     Everything that is used here can be found in either commands.h or startscreen.h.
   */
- DEVCONSOLE:
+DEVCONSOLE:
   DEV_CONSOLE_STARTSCR
-    DEVCONSOLECOM:
-   printf(">");
- scanf("%20s", DEV_CONSOLE);
- if (strcmp(DEV_CONSOLE, DEV_HELP) == 0)
-   {
-     DEV_HELP_MAIN
-       goto DEVCONSOLECOM;
-   }
- else if (strcmp(DEV_CONSOLE, DEV_STARTSCR_COM) == 0)
-   {
-     printf("\nThis may look buggy but these are the raw macros:\n\n");
+DEVCONSOLECOM:
+  printf(">");
+  scanf("%20s", DEV_CONSOLE);
+  if (strcmp(DEV_CONSOLE, DEV_HELP) == 0)
+    {
+      DEV_HELP_MAIN
+      goto DEVCONSOLECOM;
+    }
+  else if (strcmp(DEV_CONSOLE, DEV_STARTSCR_COM) == 0)
+    {
+      printf("\nThis may look buggy but these are the raw macros:\n\n");
+      
+      printf("%s\n%s\n%s\n", STARTSCR_MENU1, STARTSCR_MENU2, STARTSCR_MENU3);
+      
+      STARTSCR_MENU_MAIN
+      STARTSCR_DEBUG
+	
+      printf("%s\n%s\n%s\n%s\n", STARTSCR_CREDITS_DIRECTOR, STARTSCR_CREDITS_LEADGAMEDES, STARTSCR_CREDITS_LEADPROGRAMMER, STARTSCR_CREDITS_LEADWRITER);
+      STARTSCR_CREDITS_MAIN
 
-     printf("%s\n%s\n%s\n", STARTSCR_MENU1, STARTSCR_MENU2, STARTSCR_MENU3);
-
-     STARTSCR_MENU_MAIN
-       STARTSCR_DEBUG
-
-       printf("%s\n%s\n%s\n%s\n", STARTSCR_CREDITS_DIRECTOR, STARTSCR_CREDITS_LEADGAMEDES, STARTSCR_CREDITS_LEADPROGRAMMER, STARTSCR_CREDITS_LEADWRITER);
-     STARTSCR_CREDITS_MAIN
-
-       STARTSCR_CREDITS_MAIN
-       STARTSCR_PLAYER_CONFIG
-
-       printf("%s\n%s\n%s\n%s\n%s\n%s\n", STARTSCR_MENU_ADVEN_LOGO1, STARTSCR_MENU_ADVEN_LOGO2, STARTSCR_MENU_ADVEN_LOGO3, STARTSCR_MENU_ADVEN_LOGO4, STARTSCR_MENU_ADVEN_LOGO5, STARTSCR_MENU_ADVEN_LOGO6);
-     STARTSCR_MENU_ADVEN_LOGO_MAIN
-
-       printf("%s\n%s\n%s\n%s\n", STARTSCR_MENU_LICENSE1, STARTSCR_MENU_LICENSE2, STARTSCR_MENU_LICENSE3, STARTSCR_MENU_LICENSE4);
-     STARTSCR_MENU_LICENSE_MAIN
-       }
- else if (strcmp(DEV_CONSOLE, DEV_EXIT) == 0)
-   {
-   DEVCONSOLEEXITCOM:
-     printf("\nExit dev console or game?\n[DEV]\t[game]\n\n>");
-     scanf("%s", DEV_EXIT_CHAR);
-     if (strcmp(DEV_EXIT_CHAR, DEV_EXIT_DEV) == 0)
-       {
-	 goto MAIN;
-       }
-     else if (strcmp(DEV_EXIT_CHAR, DEV_EXIT_GAME) == 0)
-       {
-	 printf("Bye!\n");
-	 return 0;
-       }
-     else
-       {
-	 COMMAND_NOT_FOUND
-	   goto DEVCONSOLEEXITCOM;
-       }
-   }
- else if (strcmp(DEV_CONSOLE, DEV_GAME_VERSION) == 0)
-   {
-     printf("\n%s\n%s\n\n", STARTSCR_GAME_CONFIG_VERSION, STARTSCR_GAME_CONFIG_CODENAME_VERSION);
-     goto DEVCONSOLECOM;
-   }
- else
-   {
-     COMMAND_NOT_FOUND
-       goto DEVCONSOLECOM;
-   }
+      STARTSCR_CREDITS_MAIN
+      STARTSCR_PLAYER_CONFIG
+	
+      printf("%s\n%s\n%s\n%s\n%s\n%s\n", STARTSCR_MENU_ADVEN_LOGO1, STARTSCR_MENU_ADVEN_LOGO2, STARTSCR_MENU_ADVEN_LOGO3, STARTSCR_MENU_ADVEN_LOGO4, STARTSCR_MENU_ADVEN_LOGO5, STARTSCR_MENU_ADVEN_LOGO6);
+      STARTSCR_MENU_ADVEN_LOGO_MAIN
+	
+      printf("%s\n%s\n%s\n%s\n", STARTSCR_MENU_LICENSE1, STARTSCR_MENU_LICENSE2, STARTSCR_MENU_LICENSE3, STARTSCR_MENU_LICENSE4);
+      STARTSCR_MENU_LICENSE_MAIN
+	}
+  else if (strcmp(DEV_CONSOLE, DEV_EXIT) == 0)
+    {
+    DEVCONSOLEEXITCOM:
+      printf("\nExit dev console or game?\n[DEV]\t[game]\n\n>");
+      scanf("%s", DEV_EXIT_CHAR);
+      if (strcmp(DEV_EXIT_CHAR, DEV_EXIT_DEV) == 0)
+	{
+	  goto MAIN;
+	}
+      else if (strcmp(DEV_EXIT_CHAR, DEV_EXIT_GAME) == 0)
+	{
+	  printf("Bye!\n");
+	  return 0;
+	}
+      else
+	{
+	  COMMAND_NOT_FOUND
+	  goto DEVCONSOLEEXITCOM;
+	}
+    }
+  else if (strcmp(DEV_CONSOLE, DEV_GAME_VERSION) == 0)
+    {
+      printf("\n%s\n%s\n\n", STARTSCR_GAME_CONFIG_VERSION, STARTSCR_GAME_CONFIG_CODENAME_VERSION);
+      goto DEVCONSOLECOM;
+    }
+  else
+    {
+      COMMAND_NOT_FOUND
+      goto DEVCONSOLECOM;
+    }
 }	// im bored
