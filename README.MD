@@ -7,4 +7,8 @@ what you are going to need:
 * GNU/Linux
 
 To compile this you need to find main.c which can be found in Adven/src/main,
-just type in "gcc main.c -w" because for some reason gcc likes to complain about extern chars and ints!
+just type in
+```
+gcc main.c -w && mv a.out adven.out && mv adven.out ../../bin/adven.out
+```
+This will compile, rename and move it to the bin folder.
