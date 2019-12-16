@@ -1,5 +1,5 @@
 /*
-  ADVEN is a text based adventure game created in C and C++
+  ADVEN is a text based adventure game created in C and C++ and maybe a bit Assembly
   Copyright (C) 2019  DrPepperMD or rjb
   
   This program is free software: you can redistribute it and/or modify
@@ -22,9 +22,10 @@
 #include <sys/stat.h>
 #include "../../lib/saveio.h"
 #include "../../lib/startscreen.h"
-#include "../../lib/player.h"
+#include "../../lib/usrdata.h"
 #include "../../lib/commands.h"
-// #include "src\data\world\locations.h"
+#include "../../lib/locations.h"
+#include "../../lib/save.h"
 
 int main()
 {
@@ -37,13 +38,16 @@ int main()
     
   STARTSCR_PLAYER_CONFIG
   MAIN:
-  printf(">");	// <-- is sad but prevents a big bug!
+  printf(">");	// <-- is sad but prevents a big bug! DEC 16 2019: I'm gonna clarify why I did this,
+  /* if I were to put this in the scanf function then it would assume(?) that it's input and because ">"
+     is not a valid command it will say it's not recognized then loop back to the scanf which would
+     still have the arrow and it will loop forever */
   scanf("%20s", STARTSCR_COM);
   if (strcmp(STARTSCR_COM, NEW_GAME) == 0)
     {
+    REDO_NAME:
       printf("Please type in your name (can only be one word): ");
       scanf("%s", PLAYER_NAME);
-    REDO_NAME:
       printf("Are you sure you want '%s' to be your name? [Y/n]\n>", PLAYER_NAME);
       bool NEWGAME_NAME = false;
       YES_OR_NO_PROMPT 
@@ -51,6 +55,10 @@ int main()
 	  {
 	    NEWGAME_NAME = true;
 	    printf("That is gonna be your name for now on\n");
+
+	    createsave();
+	    savename();
+	    
 	  NEWGAME_TUTORIAL:
 	    printf("anyway would you like to take the tutorial? [Y/n]\n>");
 	    YES_OR_NO_PROMPT
@@ -127,7 +135,8 @@ int main()
     }
   else if (strcmp(STARTSCR_COM, DEBUG) == 0)
     {
-      printf("sdsd");
+      
+      goto MAIN;
     }
   else if (strcmp(STARTSCR_COM, DEV) == 0)
     {
