@@ -29,7 +29,6 @@
 
 int main()
 {
-  FILE *fp;
   STARTSCR_MENU_ADVEN_LOGO_MAIN
   STARTSCR_MENU_LICENSE_MAIN
     
@@ -38,13 +37,22 @@ int main()
     
   STARTSCR_PLAYER_CONFIG
   MAIN:
-  printf(">");	// <-- is sad but prevents a big bug! DEC 16 2019: I'm gonna clarify why I did this,
+  printf(">");	// <-- This is sad but prevents a big bug! DEC 16 2019: I'm gonna clarify why I did this,
   /* if I were to put this in the scanf function then it would assume(?) that it's input and because ">"
      is not a valid command it will say it's not recognized then loop back to the scanf which would
-     still have the arrow and it will loop forever */
+     still have the arrow and it will loop forever DEC 17 2019: Why did I put this comment in here?*/
   scanf("%20s", STARTSCR_COM);
   if (strcmp(STARTSCR_COM, NEW_GAME) == 0)
     {
+      printf("Do you have an already existing file called 'save.txt' located in Adven/usr/saves? [Y/n]\n");
+      YES_OR_NO_PROMPT
+	if (YES_OR_NO == YES)
+	  {
+	    printf("Then could delete that and reboot the game?");
+	    return 0;
+	  }
+	else
+	  printf("Carry on then!\n");
     REDO_NAME:
       printf("Please type in your name (can only be one word): ");
       scanf("%s", PLAYER_NAME);
@@ -55,10 +63,9 @@ int main()
 	  {
 	    NEWGAME_NAME = true;
 	    printf("That is gonna be your name for now on\n");
-
+	    // These are custom functions that I wrote, they can be found in lib/save.h (if you are using the pull request version)
 	    createsave();
 	    savename();
-	    
 	  NEWGAME_TUTORIAL:
 	    printf("anyway would you like to take the tutorial? [Y/n]\n>");
 	    YES_OR_NO_PROMPT
@@ -67,7 +74,7 @@ int main()
 		  printf("Welcome to the tutorial!\n\nPart 1: Basic movement:\n");
 		  printf("To move in this game you will first need to know where you are and which direction you want go\n");
 		  printf("to find out where you are type 'location'\n");
-		  //LOCATION = LOCATIONS_NOT_GAME_TUTORIAL1;
+		  LOCATION = LOCATIONS_NOT_GAME_TUTORIAL1;
 		TUTORIAL_COM:
 		  printf(">");
 		  scanf("%s", TUTORIAL_COM);
@@ -83,7 +90,8 @@ int main()
 		}
 	      else if (YES_OR_NO == NO)
 		{
-		  printf("Ok then...\nYour choice...\n");
+		  printf("insert text here :P\n");
+		  return 0;
 		}
 	      else
 		{
@@ -107,6 +115,9 @@ int main()
 		goto NEWGAME_TUTORIAL;
 	      }
 	  }
+
+      // SEPARATION OF NEW GAME AND EVERYTHING ELSE FOR READABILITY!
+      
     }
   else if (strcmp(STARTSCR_COM, LOAD_GAME) == 0)
     {
