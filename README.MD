@@ -12,3 +12,8 @@ just type in
 gcc main.c -w && mv a.out ../../bin/adven.out
 ```
 This will compile, rename and move it to the bin folder.
+
+How to compile Unix assembly version:
+```
+gcc main.s -o adven.out
+```
