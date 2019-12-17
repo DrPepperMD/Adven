@@ -8,7 +8,7 @@ extern char DEV_CONSOLE[20] =	"null";
 extern char DEV_EXIT_CHAR[10] =	"null";
 extern char TUTORIAL_COM[20] =	"null";
 extern char KEY_CON =	'n';		// for press any key to continues prompts, short for key-continue
-extern char YES_OR_NO =	'n';		// ye or na
+extern char YES_OR_NO =	'n';		// yes or no
 
 extern char YES =		'y';
 extern char NO =		'n';
@@ -20,14 +20,15 @@ extern char NO =		'n';
 #define STARTSCR_LICENSE_WARRENTY	"show_w"
 #define STARTSCR_LICENSE_DISTRO		"show_c"
 #define STARTSCR_CREDITS_COM		"credits"
-#define DEBUG						"debug"
-#define EXIT_GAME					"exit"
-#define NEW_GAME					"new"
-#define LOAD_GAME					"load"
-#define CONFIG_GAME					"config"
-#define HELP						"help"
+#define DEBUG		      			"debug"
+#define EXIT_GAME		       		"exit"
+#define NEW_GAME	       			"new"
+#define LOAD_GAME		       		"load"
+#define CONFIG_GAME	       			"config"
+#define HELP			       		"help"
 
 #define COMMAND_NOT_FOUND printf("Command not found...\n");
+#define UNABLE_TO_LOCATE_ERROR printf("Something went wrong in trying to locate you...");
 
 // dev console commands
 #define DEV					"dev_console"
@@ -40,7 +41,7 @@ extern char NO =		'n';
 
 // in game commands
 
-#define LOCATE_ME "location"
+#define LOCATE_ME"location"
 #define MOVE_NORTH	"north"
 #define MOVE_EAST	"east"
 #define MOVE_WEST	"west"

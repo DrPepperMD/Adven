@@ -15,6 +15,7 @@
 	along with ADVEN.  If not, see <https://www.gnu.org/licenses/>.
 */
 #include <stdio.h>
+#include <string.h>
 #pragma once
 // config for player i.e. health, gold, etc
 #define PLAYER_CONFIG_TEXT printf("\n>Edit these to your need:\n\n");

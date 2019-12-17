@@ -1,0 +1,3 @@
+A collection of misc things that will be added at some point
+
+Full list of locations in locations.h with getloc function
