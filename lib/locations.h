@@ -15,6 +15,7 @@
   along with ADVEN.  If not, see <https://www.gnu.org/licenses/>.
 */
 #include "usrdata.h"
+#include "commands.h"
 // list of all locations in the game
 
 // this is used so the game knows where you are and so you know where you are
@@ -37,7 +38,18 @@ if (LOCATION < 20)
 	if (LOCATION == 2)
 	  {
 	    printf("You're located in Tutorial part 1\navalible directions: North\n");
+	    return 0;
 	  }
+	else if (LOCATION == 3)
+	  {
+	    printf("You're located in Tutorial part 2\navalible directions: South\n");
+	    return 0;
+	  }
+	else
+	  goto UNABLE_TO_LOCATE;
       }
   }
+ UNABLE_TO_LOCATE:
+ UNABLE_TO_LOCATE_ERROR
+   return 1;
 }

@@ -13,12 +13,31 @@ FILE *fp;
 return 0;
 }
 
+int initfile()
+{
+  FILE *fp;
+  return 0;
+}
 
 int savename()
 {
 FILE *fp;
   fp = fopen("../usr/saves/save.txt", "w");
-  fprintf(fp, "%s", PLAYER_NAME);
+  fprintf(fp, "NAME: %s", PLAYER_NAME);
+  fclose(fp);
+return 0;
+}
+
+// DEV TEST
+int testfile()
+{
+  // Requires existing file
+  FILE *fp;
+  fp = fopen("../usr/saves/save.txt", "w");
+  for (int floop = 0; floop < 10; floop++)
+    {
+      fprintf(fp, "test %d\n", floop);
+    }
   fclose(fp);
 return 0;
 }
