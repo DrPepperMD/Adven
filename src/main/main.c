@@ -80,7 +80,8 @@ int main()
 		  scanf("%s", TUTORIAL_COM);
 		  if (strcmp(TUTORIAL_COM, LOCATE_ME) == 0)
 		    {
-		      printf("something...\n");
+		      getloc(LOCATION);
+		      return 0;
 		    }
 		  else
 		    {
@@ -146,8 +147,8 @@ int main()
     }
   else if (strcmp(STARTSCR_COM, DEBUG) == 0)
     {
-      
-      goto MAIN;
+      testfile();
+      return 0;
     }
   else if (strcmp(STARTSCR_COM, DEV) == 0)
     {
