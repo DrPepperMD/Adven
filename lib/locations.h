@@ -14,13 +14,30 @@
   You should have received a copy of the GNU General Public License
   along with ADVEN.  If not, see <https://www.gnu.org/licenses/>.
 */
-#pragma once
-
+#include "usrdata.h"
 // list of all locations in the game
 
 // this is used so the game knows where you are and so you know where you are
 
-#define LOCATIONS_NOT_GAME_STARTSCR	0
-#define LOCATIONS_NOT_GAME_DEVCONSOLE	1
+/*
+  Less than 20 = non game locations i.e. The main menu (for some reason)
+ */
+#define LOCATIONS_NOT_GAME_STARTSCR	0 // un-used
+#define LOCATIONS_NOT_GAME_DEVCONSOLE	1 // un-used
 #define LOCATIONS_NOT_GAME_TUTORIAL1	2
 #define LOCATIONS_NOT_GAME_TUTORIAL2	3
+
+int getloc(int LOCATION)
+{
+  // This entire function is just bloat, so if anyone finds a way to make this more efficient please contact me!
+if (LOCATION < 20)
+  {
+    if (LOCATION < 10)
+      {
+	if (LOCATION == 2)
+	  {
+	    printf("You're located in Tutorial part 1\navalible directions: North\n");
+	  }
+      }
+  }
+}
