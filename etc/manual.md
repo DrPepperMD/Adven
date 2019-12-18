@@ -1,3 +1,5 @@
+Awaiting revision.
+
 since I haven't completed this 'game' i'm gonna put some fun little gimmicks in here:
 
 How to save the game:
