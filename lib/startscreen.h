@@ -1,26 +1,24 @@
 /*
-	This file is part of ADVEN.
-
-	ADVEN is free software: you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
-
-	ADVEN is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
-
-	You should have received a copy of the GNU General Public License
-	along with ADVEN.  If not, see <https://www.gnu.org/licenses/>.
-
-	this header just removes a lot of the printf's by compressing
-	them into these #define thingys
-
-	also welcome to #define valley!
+  This file is part of ADVEN.
+  
+  ADVEN is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+  
+  ADVEN is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+  
+  You should have received a copy of the GNU General Public License
+  along with ADVEN.  If not, see <https://www.gnu.org/licenses/>.
+  
+  this header just removes a lot of the printf's by compressing
+  them into these #define thingys
+  
+  also welcome to #define valley!
 */
-
-#pragma once
 #define STARTSCR_MENU1 "[NEW] to start a new game\n"
 #define STARTSCR_MENU2 "[LOAD] to load a save file\n"
 #define STARTSCR_MENU3 "[EXIT] to exit...\n\n"
@@ -42,10 +40,10 @@
 #define STARTSCR_MENU_ADVEN_LOGO6 " /_/    \\_\\ |_____/      \\/     |______| |_| \\_|\n\n"
 #define STARTSCR_MENU_ADVEN_LOGO_MAIN printf("%s%s%s%s%s%s", STARTSCR_MENU_ADVEN_LOGO1, STARTSCR_MENU_ADVEN_LOGO2, STARTSCR_MENU_ADVEN_LOGO3, STARTSCR_MENU_ADVEN_LOGO4, STARTSCR_MENU_ADVEN_LOGO5, STARTSCR_MENU_ADVEN_LOGO6);
 
-#define STARTSCR_GAME_CONFIG_VERSION "ADVEN pre-alpha Version 0.0.xx " // this is to be changed whenever there is a update
+#define STARTSCR_GAME_CONFIG_VERSION "ADVEN pre-alpha Version 0.0.1 " // this is to be changed whenever there is a update
 #define STARTSCR_GAME_CONFIG_CODENAME_VERSION "Codename: 8-Ball version 0.2"
 
-#define STARTSCR_MENU_LICENSE1 "Copyright (C) 2019  DrPepperMD aka rjb\n" 	// the %s in this is for the version
+#define STARTSCR_MENU_LICENSE1 "Copyright (C) 2019  DrPepperMD aka rjb\n"
 #define STARTSCR_MENU_LICENSE2 "This program comes with ABSOLUTELY NO WARRANTY; for details type `show w'.\n"
 #define STARTSCR_MENU_LICENSE3 "This is free software, and you are welcome to redistribute it\n"
 #define STARTSCR_MENU_LICENSE4 "under certain conditions; type `show c' for details.\n\n"
@@ -61,3 +59,13 @@
 // game sprites
 
 #define TUTORIAL_CHARACTER "  o\n /|\\\n / \\\n"
+
+// basic about box, I decided to make this a function instead of a macro
+
+int aboutpr()
+{
+  printf("\n\tAdven (c) 2019\n\n");
+  printf("\tBy Dr Pepper MD\n");
+  printf("\tProper about box is still in development...\n\n");
+  return 0;
+}
