@@ -20,7 +20,6 @@
 #include <string.h>
 #include <sys/types.h>
 #include <sys/stat.h>
-#include "../../lib/saveio.h"
 #include "../../lib/startscreen.h"
 #include "../../lib/usrdata.h"
 #include "../../lib/commands.h"
@@ -35,7 +34,6 @@ int main()
   STARTSCR_MENU_MAIN
   STARTSCR_DEBUG
     
-  STARTSCR_PLAYER_CONFIG
   MAIN:
   printf(">");	// <-- This is sad but prevents a big bug! DEC 16 2019: I'm gonna clarify why I did this,
   /* if I were to put this in the scanf function then it would assume(?) that it's input and because ">"
@@ -48,7 +46,7 @@ int main()
       YES_OR_NO_PROMPT
 	if (YES_OR_NO == YES)
 	  {
-	    printf("Then could delete that and reboot the game?");
+	    printf("Then could you delete that and reboot the game?");
 	    return 0;
 	  }
 	else
@@ -81,6 +79,7 @@ int main()
 		  if (strcmp(TUTORIAL_COM, LOCATE_ME) == 0)
 		    {
 		      getloc(LOCATION);
+		      printf("As you can see when you typed that it found where you are\n");
 		      return 0;
 		    }
 		  else
@@ -153,6 +152,14 @@ int main()
   else if (strcmp(STARTSCR_COM, DEV) == 0)
     {
       goto DEVCONSOLE;
+    }
+  else if (strcmp(STARTSCR_COM, ABOUT) == 0)
+    {
+      // aboutpr(); comment for now
+      printf("\n\tAdven (c) 2019\n\n");
+      printf("\tBy Dr Pepper MD\n");
+      printf("\tProper about box is still in development...\n\n");
+      goto MAIN;
     }
   else
     {
@@ -228,4 +235,4 @@ DEVCONSOLECOM:
       COMMAND_NOT_FOUND
       goto DEVCONSOLECOM;
     }
-}	// im bored
+}
