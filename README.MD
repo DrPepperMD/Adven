@@ -1,4 +1,4 @@
-# Adven pre alpha version 0.0.1 GNU/Linux
+# Adven pre alpha version 0.0.1 for GNU/Linux
 
 How to compile: (Or you could always use the pre-compiled binaries in bin)
 what you are going to need:
@@ -17,3 +17,6 @@ How to compile Unix assembly version:
 ```
 gcc main.s -o adven.out
 ```
+
+Also if you're interested in creating a Windows comaptible version for some
+unknown reason contact me!
