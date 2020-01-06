@@ -1,5 +1,7 @@
 # Adven pre alpha version 0.0.1 for GNU/Linux
 
+# Halted development for the time being as I work on some other things that will help this
+
 How to compile: (Or you could always use the pre-compiled binaries in bin)
 what you are going to need:
 * GCC
