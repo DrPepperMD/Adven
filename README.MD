@@ -11,11 +11,11 @@ what you are going to need:
 To compile this you need to find main.c which can be found in Adven/src/main,
 just type in
 ```
-gcc main.c -w && mv a.out ../../bin/adven.out
+gcc main.c -w && mv a.out ../../bin/adven
 ```
 This will compile, rename and move it to the bin folder.
 
-How to compile Unix assembly version:
+How to compile assembly version:
 ```
 gcc main.s -o adven.out
 ```
