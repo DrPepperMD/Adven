@@ -155,10 +155,7 @@ int main()
     }
   else if (strcmp(STARTSCR_COM, ABOUT) == 0)
     {
-      // aboutpr(); comment for now
-      printf("\n\tAdven (c) 2019\n\n");
-      printf("\tBy Dr Pepper MD\n");
-      printf("\tProper about box is still in development...\n\n");
+      aboutpr();
       goto MAIN;
     }
   else
@@ -186,25 +183,9 @@ DEVCONSOLECOM:
     }
   else if (strcmp(DEV_CONSOLE, DEV_STARTSCR_COM) == 0)
     {
-      printf("\nThis may look buggy but these are the raw macros:\n\n");
-      
-      printf("%s\n%s\n%s\n", STARTSCR_MENU1, STARTSCR_MENU2, STARTSCR_MENU3);
-      
-      STARTSCR_MENU_MAIN
-      STARTSCR_DEBUG
-	
-      printf("%s\n%s\n%s\n%s\n", STARTSCR_CREDITS_DIRECTOR, STARTSCR_CREDITS_LEADGAMEDES, STARTSCR_CREDITS_LEADPROGRAMMER, STARTSCR_CREDITS_LEADWRITER);
-      STARTSCR_CREDITS_MAIN
-
-      STARTSCR_CREDITS_MAIN
-      STARTSCR_PLAYER_CONFIG
-	
-      printf("%s\n%s\n%s\n%s\n%s\n%s\n", STARTSCR_MENU_ADVEN_LOGO1, STARTSCR_MENU_ADVEN_LOGO2, STARTSCR_MENU_ADVEN_LOGO3, STARTSCR_MENU_ADVEN_LOGO4, STARTSCR_MENU_ADVEN_LOGO5, STARTSCR_MENU_ADVEN_LOGO6);
-      STARTSCR_MENU_ADVEN_LOGO_MAIN
-	
-      printf("%s\n%s\n%s\n%s\n", STARTSCR_MENU_LICENSE1, STARTSCR_MENU_LICENSE2, STARTSCR_MENU_LICENSE3, STARTSCR_MENU_LICENSE4);
-      STARTSCR_MENU_LICENSE_MAIN
-	}
+      // reduced to a function because screw this pile of peepee poopoo
+      startscrall();
+    }
   else if (strcmp(DEV_CONSOLE, DEV_EXIT) == 0)
     {
     DEVCONSOLEEXITCOM:
