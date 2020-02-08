@@ -18,16 +18,19 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <string.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include "../../lib/startscreen.h"
-#include "../../lib/usrdata.h"
-#include "../../lib/commands.h"
-#include "../../lib/locations.h"
-#include "../../lib/save.h"
+
+#include "../../lib/com/comlist.h"
+#include "../../lib/com/comprompt.h"
+
+#include "../../lib/etc/"
+
+#include "../../lib/main/locations.h"
+#include "../../lib/main/startscreen.h"
+#include "../../lib/main/usrdata.h"
 
 int main()
 {
+  // Can't wait to get rid of this all, I will miss it though :-(
   STARTSCR_MENU_ADVEN_LOGO_MAIN
   STARTSCR_MENU_LICENSE_MAIN
     
