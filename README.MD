@@ -20,5 +20,5 @@ How to compile assembly version:
 gcc main.s -o adven.out
 ```
 
-Also if you're interested in creating a Windows comaptible version for some
+Also if you're interested in creating a Windows compatible version for some
 unknown reason contact me!
