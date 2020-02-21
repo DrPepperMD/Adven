@@ -1,27 +1,51 @@
+// A sort of read-eval-print-loop but for my game
+
 #include <stdlib.h>
 #include <stdbool.h>
 
 #ifndef REPL_H
 #define REPL_H
 
-#define COM_AMOUNT 7
-
 bool exitprompt;
-char command[8];
 
-// this is used in a switch statement later
-int magicnum;
+// 50 just to be safe
+char command[50];
 
-// This would be stored in comlist.h for adven
-char comlist[COM_AMOUNT][10] =
+/* This is used in a switch statement later,
+   why are there two magic numbers?
+ */
+int COMNUMBER, MAGICNUMONE, MAGICNUMTWO;
+
+// Every time you enter an area where you can input commands it will change
+// the list of commands will change
+char MAIN_MENU_COMLIST[6][10] =
   {
-   "foo",
-   "bar",
-   "foobar",
-   "corge",
-   "xyzzy",
+   "new",
+   "load",
+   "show w",
+   "show c",
    "help",
    "exit"
+  };
+
+char DEV_CONSOLE_COMLIST[7] [15] =
+  {
+   "dev console",
+   "help",
+   "startscr",
+   "exit",
+   "dev",
+   "game",
+   "game version"
+  };
+
+char IN_GAME_COMLIST[5] [20] =
+  {
+   "locate me",
+   "north",
+   "east",
+   "west",
+   "south"
   };
 
 int input(command)
