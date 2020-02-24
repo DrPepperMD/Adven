@@ -31,9 +31,18 @@
 
 int main()
 {
-  MAGICNUMTWO = 5;
+  printf("\033[H\033[2J");
+  MAGICNUMTWO = 0;
   printmainmenu();
-  input(command);
+  for (;;)
+    {
+      if (exitprompt == false)
+	{
+	  input(command);
+	}
+      else
+      return 0;
+    }
   return 0;
   /*
  DEVCONSOLE:
