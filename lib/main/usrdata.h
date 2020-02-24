@@ -16,11 +16,21 @@
 */
 #include <stdio.h>
 #include <string.h>
-#pragma once
+
+#ifndef USRDATA_H
+#define USRDATA_H
+
 // config for player i.e. health, gold, etc
 #define PLAYER_CONFIG_TEXT printf("\n>Edit these to your need:\n\n");
 
-extern int	LOCATION =	0;
+// Avalible directions, these will change according to your location
+extern int DIR0 = 0; // North
+extern int DIR1 = 0; // East
+extern int DIR2 = 0; // South
+extern int DIR3 = 0; // West
 
+extern int	LOCATION =	0;
 extern char	PLAYER_NAME[50] =	"null";
 extern int	health =	0;
+
+#endif

@@ -5,6 +5,31 @@
 #include <sys/stat.h>
 #include "usrdata.h"
 
+#define DEFAULT_USER_DATA_VALUE "NULL"
+
+char userdata[10] [25] =
+  {
+   "", // Name
+   "", // something
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  };
+
+int setuserdata()
+{
+  for (int setuserdataloop = 0; setuserdataloop < 10; setuserdataloop++)
+    {
+      userdata[setuserdataloop] = DEFAULT_USER_DATA_VALUE;
+    }
+  return 0;
+}
+
 int createsave()
 {
 FILE *fp;
@@ -19,7 +44,7 @@ int initfile()
   return 0;
 }
 
-int savename()
+int savename() // This needs to be changed!
 {
 FILE *fp;
   fp = fopen("../usr/saves/save.txt", "w");

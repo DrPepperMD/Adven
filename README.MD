@@ -1,24 +1,16 @@
-# Adven pre alpha version 0.0.1 for GNU/Linux
+# Adven pre alpha version 0.1.2 for GNU/Linux
 
-# Halted development for the time being as I work on some other things that will help this
+# Compilable but semi-functional
 
-How to compile: (Or you could always use the pre-compiled binaries in bin)
-what you are going to need:
+What you are going to need to compile:
 * GCC
-* Standard C headers
 * GNU/Linux
 
 To compile this you need to find main.c which can be found in Adven/src/main,
 just type in
 ```
-gcc main.c -w && mv a.out ../../bin/adven.out
-```
-This will compile, rename and move it to the bin folder.
-
-How to compile Unix assembly version:
-```
-gcc main.s -o adven.out
+gcc main.c -w && mv a.out ../../bin/adven
 ```
 
-Also if you're interested in creating a Windows comaptible version for some
+Also if you're interested in creating a Windows compatible version for some
 unknown reason contact me!
