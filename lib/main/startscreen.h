@@ -1,57 +1,51 @@
 /*
-  This file is part of ADVEN.
-  
-  ADVEN is free software: you can redistribute it and/or modify
-  it under the terms of the GNU General Public License as published by
-  the Free Software Foundation, either version 3 of the License, or
-  (at your option) any later version.
-  
-  ADVEN is distributed in the hope that it will be useful,
-  but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  GNU General Public License for more details.
-  
-  You should have received a copy of the GNU General Public License
-  along with ADVEN.  If not, see <https://www.gnu.org/licenses/>.
-  
-  this header just removes a lot of the printf's by compressing
-  them into these #define thingys
-  
-  also welcome to #define valley!
+  Copyright (c) 2019, 2020 Dr Pepper
+
+  This file contains all the data for the start screen/main menu
 */
 
 #ifndef STARTSCREEN_H
 #define STARTSCREEN_H
 
-#define STARTSCR_MENU1 "[NEW] to start a new game\n"
-#define STARTSCR_MENU2 "[LOAD] to load a save file\n"
-#define STARTSCR_MENU3 "[EXIT] to exit...\n\n"
+const char MAIN_MENU [3] [28] =
+  {
+   "[NEW] to start a new game",
+   "[LOAD] to load a save file",
+   "[EXIT] to exit...\n"
+  };
+
 #define STARTSCR_MENU_MAIN printf("%s%s%s", STARTSCR_MENU1, STARTSCR_MENU2, STARTSCR_MENU3);
 #define STARTSCR_DEBUG printf("[DEBUG] try out experimental freatures!\n\n");
 
-#define STARTSCR_CREDITS_DIRECTOR "\nDirector:\nDrPepperMD\n\n"
-#define STARTSCR_CREDITS_LEADGAMEDES "\nLead Game Designer:\nDrPepperMD\n\n"
-#define STARTSCR_CREDITS_LEADPROGRAMMER "\nLead Programmer:\nDrPepperMD\n\n"
-#define STARTSCR_CREDITS_LEADWRITER "\nLead writer:\nDrPepperMD\n\n"
+const char CREDITS [4] [20] =
+  {
+   "\nDirector:\nDrPepperMD",
+   "\nLead Game Designer:\nDrPepperMD",
+   "\nLead Programmer:\nDrPepperMD",
+   "\nLead writer:\nDrPepperMD"
+  };
 #define STARTSCR_CREDITS_MAIN printf("%s%s%s%s", STARTSCR_CREDITS_DIRECTOR, STARTSCR_CREDITS_LEADGAMEDES, STARTSCR_CREDITS_LEADPROGRAMMER, STARTSCR_CREDITS_LEADWRITER);
 #define STARTSCR_PLAYER_CONFIG printf("[CONFIG] edit player config for game (FOR TESTING ONLY)\n\n");
 
-#define STARTSCR_MENU_ADVEN_LOGO1 "             _____   __      __  ______   _   _ \n"
-#define STARTSCR_MENU_ADVEN_LOGO2 "     /\\     |  __ \\  \\ \\    / / |  ____| | \\ | |\n"
-#define STARTSCR_MENU_ADVEN_LOGO3 "    /  \\    | |  | |  \\ \\  / /  | |__    |  \\| |\n"
-#define STARTSCR_MENU_ADVEN_LOGO4 "   / /\\ \\   | |  | |   \\ \\/ /   |  __|   | . ` |\n"
-#define STARTSCR_MENU_ADVEN_LOGO5 "  / ____ \\  | |__| |    \\  /    | |____  | |\\  |\n"
-#define STARTSCR_MENU_ADVEN_LOGO6 " /_/    \\_\\ |_____/      \\/     |______| |_| \\_|\n\n"
-#define STARTSCR_MENU_ADVEN_LOGO_MAIN printf("%s%s%s%s%s%s", STARTSCR_MENU_ADVEN_LOGO1, STARTSCR_MENU_ADVEN_LOGO2, STARTSCR_MENU_ADVEN_LOGO3, STARTSCR_MENU_ADVEN_LOGO4, STARTSCR_MENU_ADVEN_LOGO5, STARTSCR_MENU_ADVEN_LOGO6);
+const char ADVEN_LOGO [6] [55] =
+  {
+   "             _____   __      __  ______   _   _ ",
+   "     /\\     |  __ \\  \\ \\    / / |  ____| | \\ | |",
+   "    /  \\    | |  | |  \\ \\  / /  | |__    |  \\| |",
+   "   / /\\ \\   | |  | |   \\ \\/ /   |  __|   | . ` |",
+   "  / ____ \\  | |__| |    \\  /    | |____  | |\\  |",
+   " /_/    \\_\\ |_____/      \\/     |______| |_| \\_|\n"
+  };
 
-#define STARTSCR_GAME_CONFIG_VERSION "ADVEN pre-alpha Version 0.0.1 " // this is to be changed whenever there is a update
-#define STARTSCR_GAME_CONFIG_CODENAME_VERSION "Codename: 8-Ball version 0.2"
+#define STARTSCR_GAME_CONFIG_VERSION "ADVEN pre-alpha Version 0.1.2 " // this is to be changed whenever there is a update
 
-#define STARTSCR_MENU_LICENSE1 "Copyright (C) 2019  DrPepperMD aka rjb\n"
-#define STARTSCR_MENU_LICENSE2 "This program comes with ABSOLUTELY NO WARRANTY; for details type `show w'.\n"
-#define STARTSCR_MENU_LICENSE3 "This is free software, and you are welcome to redistribute it\n"
-#define STARTSCR_MENU_LICENSE4 "under certain conditions; type `show c' for details.\n\n"
-#define STARTSCR_MENU_LICENSE_MAIN printf("%s%s%s%s%s", STARTSCR_GAME_CONFIG_VERSION, STARTSCR_MENU_LICENSE1, STARTSCR_MENU_LICENSE2, STARTSCR_MENU_LICENSE3, STARTSCR_MENU_LICENSE4);
+const char LICENSE [4] [76] =
+  {
+   "Copyright (C) 2019, 2020 Dr Pepper",
+   "This program comes with ABSOLUTELY NO WARRANTY; for details type `show w'.",
+   "This is free software, and you are welcome to redistribute it",
+   "under certain conditions; type `show c' for details.\n"
+  };
 
 // dev console \/
 
@@ -75,26 +69,25 @@ int aboutpr()
 }
 
 int startscrall()
-{
-  printf("\nThis may look buggy but these are the raw macros:\n\n");
-      
-  printf("%s\n%s\n%s\n", STARTSCR_MENU1, STARTSCR_MENU2, STARTSCR_MENU3);
-      
-  STARTSCR_MENU_MAIN
-    STARTSCR_DEBUG
-	
-    printf("%s\n%s\n%s\n%s\n", STARTSCR_CREDITS_DIRECTOR, STARTSCR_CREDITS_LEADGAMEDES, STARTSCR_CREDITS_LEADPROGRAMMER, STARTSCR_CREDITS_LEADWRITER);
-  STARTSCR_CREDITS_MAIN
+{   
 
-    STARTSCR_CREDITS_MAIN
-    STARTSCR_PLAYER_CONFIG
-	
-    printf("%s\n%s\n%s\n%s\n%s\n%s\n", STARTSCR_MENU_ADVEN_LOGO1, STARTSCR_MENU_ADVEN_LOGO2, STARTSCR_MENU_ADVEN_LOGO3, STARTSCR_MENU_ADVEN_LOGO4, STARTSCR_MENU_ADVEN_LOGO5, STARTSCR_MENU_ADVEN_LOGO6);
-  STARTSCR_MENU_ADVEN_LOGO_MAIN
-	
-    printf("%s\n%s\n%s\n%s\n", STARTSCR_MENU_LICENSE1, STARTSCR_MENU_LICENSE2, STARTSCR_MENU_LICENSE3, STARTSCR_MENU_LICENSE4);
-  STARTSCR_MENU_LICENSE_MAIN
-    return 0;
+}
+
+int printmainmenu()
+{
+  for (int temp = 0; temp < 6; temp++)
+    {
+      printf("%s\n", ADVEN_LOGO[temp]);
+    }
+  for (int temp = 0; temp < 4; temp++)
+    {
+      printf("%s\n", LICENSE[temp]);
+    }
+  for (int temp = 0; temp < 3; temp++)
+    {
+      printf("%s\n", MAIN_MENU[temp]);
+    }
+  return 0;
 }
 
 #endif
