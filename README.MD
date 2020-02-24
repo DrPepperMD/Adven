@@ -1,11 +1,10 @@
 # Adven pre alpha version 0.1.2 for GNU/Linux
 
-# Halted development for the time being as I work on some other things that will help this
+# Compilable but semi-functional
 
 How to compile: (Or you could always use the pre-compiled binaries in bin)
 what you are going to need:
 * GCC
-* Standard C headers
 * GNU/Linux
 
 To compile this you need to find main.c which can be found in Adven/src/main,
