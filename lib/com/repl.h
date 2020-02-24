@@ -1,3 +1,4 @@
+
 // A sort of read-eval-print-loop but for my game
 
 #include <stdlib.h>
@@ -25,7 +26,7 @@ char command[50];
 int MAGICNUMONE, MAGICNUMTWO;
 
 // List 0 
-const char MAIN_MENU_COMLIST[6][10] =
+const char MAIN_MENU_COMLIST[6][8] =
   {
    "new",
    "load",
@@ -59,25 +60,26 @@ const char IN_GAME_COMLIST[5] [20] =
 
 int input(command)
 {
-  scanf("%s", command);
+  printf("> ");
+  scanf(" %[^\n]s", command);
   
   switch(MAGICNUMTWO)
     {
     case 0:
-      switch(MAGICNUMTWO)
+      for (int REPLLOOP = 0; REPLLOOP < MAIN_MENU_AMOUNT; REPLLOOP++)
 	{
-	  for (int REPLLOOP = 0; REPLLOOP < MAIN_MENU_AMOUNT)
+	  // I don't like using strcmp because it feels dirty
+	  if (strcmp(command, MAIN_MENU_COMLIST[REPLLOOP]) == 0)
 	    {
-	      // I don't like using strcmp because it feels dirty
-	      if (strcmp(command, MAIN_MANU_COMLIST[REPLLOOP]) == 0)
-		{
-		  MAGICNUMONE = REPLLOOP;
-		  execute(command);
-		}
+	      MAGICNUMONE = REPLLOOP;
+	      execute(MAGICNUMONE, MAGICNUMTWO, command);
+	      return 0;
 	    }
 	}
+      printf("aaaaaaaaaaa\n");
+      return 0;
       break;
-    case 1:
+      /*case 1:
       switch(MAGICNUMTWO)
 	{
 	  switch(MAGICNUMTWO)
@@ -108,7 +110,7 @@ int input(command)
 		}
 	    }
 	}
-      break;
+	break; */
     default:
       printf("ERROR: MAGICNUMTWO is invalid!\n");
       return 1;
@@ -117,8 +119,50 @@ int input(command)
   return 0;
 }
 
-int execute(MAGICNUMONE);
+int execute(MAGICNUMONE, MAGICNUMTWO, command)
 {
+  switch(MAGICNUMTWO)
+    {
+    case 0:
+      switch(MAGICNUMONE)
+	{
+	case 0:
+	  printf("NEU!\n");
+	  break;
+	case 1:
+	  printf("Nothing to load :-(\n");
+	  break;
+	case 2:
+	  printf("I forgot what to write for show w\n");
+	  break;
+	case 3:
+	  printf("I forgot what to write for show c\n");
+	  break;
+	case 4:
+	  printf("There is no help here!\n");
+	  break;
+	case 5:
+	  printf("Okie dokie!\n");
+	  exitprompt = true;
+	  break;
+    	}
+      return 0;
+      break;
+      /* case 1:
+      switch(MAGICNUMONE)
+	{
+	}
+      break;
+    case 2:
+      switch(MAGICNUMONE)
+	{
+	}
+	break; */
+    default:
+      printf("ERROR: H-how?");
+      break;
+    }
+  return 0;
 }
 
 #endif
