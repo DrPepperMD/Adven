@@ -6,19 +6,26 @@
 #ifndef REPL_H
 #define REPL_H
 
+// Constants for the amount of commands in a list
+#define MAIN_MENU_AMOUNT 6
+#define DEV_CONSOLE_AMOUNT 7
+#define IN_GAME_AMOUNT 5
+
 bool exitprompt;
 
 // 50 just to be safe
 char command[50];
 
-/* This is used in a switch statement later,
-   why are there two magic numbers?
+/* "MAGICNUMONE" is used for the command and "MAGICNUMTWO" is used for the
+   list of commands it will scan so if "MAGICNUMONE" was 4 and "MAGICNUMTWO"
+   was 5 it will look in list 5 for command 4, it's really simple when you
+   get to know it. :-)
  */
-int COMNUMBER, MAGICNUMONE, MAGICNUMTWO;
 
-// Every time you enter an area where you can input commands it will change
-// the list of commands will change
-char MAIN_MENU_COMLIST[6][10] =
+int MAGICNUMONE, MAGICNUMTWO;
+
+// List 0 
+const char MAIN_MENU_COMLIST[6][10] =
   {
    "new",
    "load",
@@ -28,7 +35,8 @@ char MAIN_MENU_COMLIST[6][10] =
    "exit"
   };
 
-char DEV_CONSOLE_COMLIST[7] [15] =
+// List 1
+const char DEV_CONSOLE_COMLIST[7] [15] =
   {
    "dev console",
    "help",
@@ -39,7 +47,8 @@ char DEV_CONSOLE_COMLIST[7] [15] =
    "game version"
   };
 
-char IN_GAME_COMLIST[5] [20] =
+// List 2
+const char IN_GAME_COMLIST[5] [20] =
   {
    "locate me",
    "north",
@@ -51,56 +60,65 @@ char IN_GAME_COMLIST[5] [20] =
 int input(command)
 {
   scanf("%s", command);
-  compare(command);
-  return 0;
-}
-
-int compare(command)
-{
-  for (int loopmax = 0; loopmax < COM_AMOUNT; loopmax++)
-    {
-      if (strcmp(command, comlist[loopmax]) == 0)
-	{
-	  magicnum = loopmax;
-	  execute(magicnum);
-	}
-    }
-  return 0;
-}
-
-int execute(magicnum)
-{
-  switch(magicnum)
+  
+  switch(MAGICNUMTWO)
     {
     case 0:
-      printf("foo\n");
-      break;
-    case 1:
-      printf("bar\n");
-      break;
-    case 2:
-      printf("foobar\n");
-      break;
-    case 3:
-      printf("corge\n");
-      break;
-    case 4:
-      printf("xyzzy\n");
-      break;
-    case 5:
-      for (int helploop = 0; helploop < COM_AMOUNT; helploop++)
+      switch(MAGICNUMTWO)
 	{
-	  printf("%s\n", comlist[helploop]);
+	  for (int REPLLOOP = 0; REPLLOOP < MAIN_MENU_AMOUNT)
+	    {
+	      // I don't like using strcmp because it feels dirty
+	      if (strcmp(command, MAIN_MANU_COMLIST[REPLLOOP]) == 0)
+		{
+		  MAGICNUMONE = REPLLOOP;
+		  execute(command);
+		}
+	    }
 	}
       break;
-    case 6:
-      exitprompt = true;
+    case 1:
+      switch(MAGICNUMTWO)
+	{
+	  switch(MAGICNUMTWO)
+	    {
+	      for (int REPLLOOP = 0; REPLLOOP < DEV_CONSOLE_AMOUNT)
+		{
+		  if (strcmp(command, DEV_CONSOLE_COMLIST[REPLLOOP]) == 0)
+		    {
+		      MAGICNUMONE = REPLLOOP;
+		      execute(command);
+		    }
+		}
+	    }
+	}
+      break;
+    case 2:
+      switch(MAGICNUMTWO)
+	{
+	  switch(MAGICNUMTWO)
+	    {
+	      for (int REPLLOOP = 0; REPLLOOP < IN_GAME_AMOUNT)
+		{
+		  if (strcmp(command, IN_GAME_COMLIST[REPLLOOP]) == 0)
+		    {
+		      MAGICNUMONE = REPLLOOP;
+		      execute(command);
+		    }
+		}
+	    }
+	}
       break;
     default:
-      printf("Uh oh\n");
+      printf("ERROR: MAGICNUMTWO is invalid!\n");
+      return 1;
       break;
     }
   return 0;
+}
+
+int execute(MAGICNUMONE);
+{
 }
 
 #endif
