@@ -14,34 +14,40 @@
   You should have received a copy of the GNU General Public License
   along with ADVEN.  If not, see <https://www.gnu.org/licenses/>.
 */
-#include "usrdata.h"
-#include "commands.h"
 
 #ifndef LOCATIONS_H
 #define LOCATIONS_H
 
-// list of all locations in the game
+#include "usrdata.h"
+#include "commands.h"
 
-// this is used so the game knows where you are and so you know where you are
+int X, Y;
 
-/*
-  Less than 20 = non game locations i.e. The main menu (for some reason)
+/* Map legend:
+   0: plain land
+   1: path ways
+   2: water
+   3: village
+   4: impassable terrain i.e. mountain
+   5: cave
+   6: forest
+   7: city
  */
-#define LOCATIONS_NULL                  0
-#define LOCATIONS_NOT_GAME_STARTSCR	1 // un-used
-#define LOCATIONS_NOT_GAME_DEVCONSOLE	2 // un-used
-#define LOCATIONS_NOT_GAME_TUTORIAL1	3
-#define LOCATIONS_NOT_GAME_TUTORIAL2	4
 
-// Directions to help with navigation
-#define NULLDIR  0
-#define NORTH    1
-#define EAST     1
-#define SOUTH    1 
-#define WEST     1
+// Map used for demo
+const int demomap[5] [5] =
+  {
+   {5, 0, 1, 2, 2},
+   {6, 6, 1, 0, 2},
+   {1, 1, 1, 0, 0},
+   {6, 3, 1, 1, 0},
+   {0, 0, 0, 1, 7}
+  };
 
-extern int LOCATION = 0;
+// Coming soon
+const int mainmap;
 
+// This needs to be updated
 int getloc(int LOCATION)
 {
   // This entire function is just bloat, so if anyone finds a way to make this more efficient please contact me!
