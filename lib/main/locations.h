@@ -18,10 +18,7 @@
 #ifndef LOCATIONS_H
 #define LOCATIONS_H
 
-#include "usrdata.h"
-#include "commands.h"
-
-int X, Y;
+int X, Y, MAP;
 
 /* Map legend:
    0: plain land
@@ -44,34 +41,31 @@ const int demomap[5] [5] =
    {0, 0, 0, 1, 7}
   };
 
+// The map seen when you type the command "map" (Work in progress)
+const char displaymap[5] [5] =
+  {
+   ""
+   ""
+   ""
+   ""
+   ""
+  }
+
 // Coming soon
-const int mainmap;
+const int mainmap[80] [80];
 
 // This needs to be updated
-int getloc(int LOCATION)
+int getloc()
 {
-  // This entire function is just bloat, so if anyone finds a way to make this more efficient please contact me!
-if (LOCATION < 20)
-  {
-    if (LOCATION < 10)
-      {
-	if (LOCATION == 3)
-	  {
-	    printf("\nYou're located in Tutorial part 1\navalible directions: North\n");
-	    return 0;
-	  }
-	else if (LOCATION == 4)
-	  {
-	    printf("\nYou're located in Tutorial part 2\navalible directions: South\n");
-	    return 0;
-	  }
-	else
-	  goto UNABLE_TO_LOCATE;
-      }
-  }
- UNABLE_TO_LOCATE:
- UNABLE_TO_LOCATE_ERROR
-   return 1;
+  switch (MAP)
+    {
+    case 0:
+      printf("You're at coordinates X: %d, Y: %d in the demo map\n", X, Y);
+      break;
+    default:
+      printf("You currently cannot be located!\n");
+      break;
+    }
 }
 
 #endif
