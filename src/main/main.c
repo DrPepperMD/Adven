@@ -16,18 +16,17 @@
   You should have received a copy of the GNU General Public License
   along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include <unistd.h>
 
 #include "../../lib/com/repl.h"
-
-// #include "../../lib/etc/"
-
-// #include "../../lib/main/locations.h"
+#include "../../lib/main/locations.h"
 #include "../../lib/main/startscreen.h"
-// #include "../../lib/main/usrdata.h"
+#include "../../lib/main/usrdata.h"
+#include "game.c"
 
 int main()
 {
@@ -38,12 +37,23 @@ int main()
     {
       if (exitprompt == false)
 	{
-	  input(command);
+	  if (demomode == true)
+	    {
+	      demo();
+	    }
+	  input();
 	}
       else
-      return 0;
+	return 0;
     }
   return 0;
+
+
+
+
+
+
+  
   /*
  DEVCONSOLE:
   DEV_CONSOLE_STARTSCR
