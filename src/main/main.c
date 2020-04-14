@@ -20,17 +20,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <string.h>
 #include <unistd.h>
 
 #include "../../lib/com/repl.h"
 #include "../../lib/main/locations.h"
 #include "../../lib/main/startscreen.h"
 #include "../../lib/main/usrdata.h"
-#include "game.c"
+#include "../../lib/etc/yesno.h"
+
+#define clearscr printf("\033[H\033[2J");
 
 int main()
 {
-  printf("\033[H\033[2J");
+  clearscr;
   MAGICNUMTWO = 0;
   printmainmenu();
   for (;;)
@@ -41,65 +44,76 @@ int main()
 	    {
 	      demo();
 	    }
+	  else if (devmode == true)
+	    {
+	      devconsole();
+	    }
+	  else
 	  input();
 	}
       else
 	return 0;
     }
   return 0;
-
-
-
-
-
-
-  
-  /*
- DEVCONSOLE:
-  DEV_CONSOLE_STARTSCR
-    DEVCONSOLECOM:
-   printf(">");
- scanf("%20s", DEV_CONSOLE);
- if (strcmp(DEV_CONSOLE, DEV_HELP) == 0)
-   {
-     DEV_HELP_MAIN
-       goto DEVCONSOLECOM;
-   }
- else if (strcmp(DEV_CONSOLE, DEV_STARTSCR_COM) == 0)
-   {
-     // reduced to a function because screw this pile of peepee poopoo
-     startscrall();
-   }
- else if (strcmp(DEV_CONSOLE, DEV_EXIT) == 0)
-   {
-   DEVCONSOLEEXITCOM:
-     printf("\nExit dev console or game?\n[DEV]\t[game]\n\n>");
-     scanf("%s", DEV_EXIT_CHAR);
-     if (strcmp(DEV_EXIT_CHAR, DEV_EXIT_DEV) == 0)
-       {
-	 goto MAIN;
-       }
-     else if (strcmp(DEV_EXIT_CHAR, DEV_EXIT_GAME) == 0)
-       {
-	 printf("Bye!\n");
-	 return 0;
-       }
-     else
-       {
-	 COMMAND_NOT_FOUND
-	   goto DEVCONSOLEEXITCOM;
-       }
-   }
- else if (strcmp(DEV_CONSOLE, DEV_GAME_VERSION) == 0)
-   {
-     printf("\n%s\n%s\n\n", STARTSCR_GAME_CONFIG_VERSION, STARTSCR_GAME_CONFIG_CODENAME_VERSION);
-     goto DEVCONSOLECOM;
-   }
- else
-   {
-     COMMAND_NOT_FOUND
-       goto DEVCONSOLECOM;
-   }
 }
-  */
+
+void devconsole()
+{
+  MAGICNUMTWO = 1;
+  exitprompt = false;
+  for (;;)
+    {
+      if (exitprompt == false)
+	{
+	  input();
+	}
+      else
+	{
+	  devmode = false;
+	  exitprompt = false;
+	  return;
+	}
+    }
 }
+
+// Actually contains game stuff
+
+void demo()
+{
+  int yesorno;
+  exitprompt = false;
+  X = 2;
+  Y = 0;
+  MAP = 0;
+  // shortend version of playersetup(); from usrdata.h
+  printf("Before we get to the game, what do you want to be called?\n> ");
+  while (yesorno != 0)
+    {
+      scanf(" %[^\n]s", playerinfo[0]);
+      printf("Are you sure you want to be called '%s'", playerinfo[0]);
+      yesorno = yesno();
+      if (yesorno == 1)
+	{
+	  printf("Then type in your new name\n> ");
+	}
+    }
+  printf("Now we can get to the game!");
+  sleep(2);
+  clearscr;
+  printf("You appear in the middle of a pathway in the middle of nowhere,\n");
+  printf("");
+  printf("");
+  MAGICNUMTWO = 2;
+  for (;;)
+    {
+      if (exitprompt == false)
+	{
+	  input();
+	}
+      else
+	return;
+    }
+  for (;;) {}
+}
+
+
